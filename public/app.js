@@ -33,10 +33,9 @@ new Vue({
                     JSON.stringify({
                         email: this.email,
                         username: this.username,
-                        // sanitise by stripping html + js ?
-                        message: $('<p>').html(this.newMsg).text()
-                    })
-                );
+                        message: $('<p>').html(this.newMsg).text() // sanitise by stripping html + js ?
+                    }
+                ));
                 // reset newMsg
                 this.newMsg = '';
             }
@@ -48,7 +47,7 @@ new Vue({
                 return
             }
             if (!this.username) {
-                Materialize.toast('Please enteer a witty username', 2000);
+                Materialize.toast('Please enter a witty username', 2000);
                 return
             }
             // sanitise inputs and set joined to true
@@ -57,7 +56,7 @@ new Vue({
             this.joined = true;
         },
         // get gravatar URL
-        gravatarURL: function() {
+        gravatarURL: function(email) {
             return 'http://www.gravatar.com/avatar/' + CryptoJS.MD5(email);
         }
     }
